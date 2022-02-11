@@ -1,4 +1,4 @@
 # JRE
 
-macOS: jdk8u265-b01  
+macOS: jdk-17.0.2+8
 win: jdk-11.0.4+11
