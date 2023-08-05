@@ -977,6 +977,7 @@ jdk/internal/loader/NativeLibraries$LibraryPaths
 jdk/internal/loader/NativeLibraries$NativeLibraryContext
 jdk/internal/loader/NativeLibraries$NativeLibraryContext$1
 jdk/internal/loader/NativeLibraries$NativeLibraryImpl
+jdk/internal/loader/NativeLibraries$NativeLibraryImpl$1
 jdk/internal/loader/NativeLibrary
 jdk/internal/loader/Resource
 jdk/internal/loader/URLClassPath
@@ -1199,6 +1200,7 @@ sun/util/calendar/Gregorian$Date
 sun/util/calendar/ZoneInfo
 sun/util/calendar/ZoneInfoFile
 sun/util/calendar/ZoneInfoFile$1
+sun/util/calendar/ZoneInfoFile$Checksum
 sun/util/calendar/ZoneInfoFile$ZoneOffsetTransitionRule
 sun/util/cldr/CLDRBaseLocaleDataMetaInfo
 sun/util/cldr/CLDRCalendarDataProviderImpl
