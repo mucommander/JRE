@@ -15,6 +15,40 @@ jobs:
         with:
           repository: mucommander/jdk
 
+      - name: 'Get the BootJDK'
+        id: bootjdk
+        uses: mucommander/jdk/.github/actions/get-bootjdk
+        with:
+          platform: ${{ inputs.platform }}
+
+      - name: 'Get JTReg'
+        id: jtreg
+        uses: mucommander/jdk/.github/actions/get-jtreg
+
+      - name: 'Install toolchain and dependencies'
+        run: |
+          # Run Homebrew installation and xcode-select
+          brew install autoconf make
+          sudo xcode-select --switch /Applications/Xcode_${{ inputs.xcode-toolset-version }}.app/Contents/Developer
+          # This will make GNU make available as 'make' and not only as 'gmake'
+          echo '/usr/local/opt/make/libexec/gnubin' >> $GITHUB_PATH
+
+      - name: 'Configure'
+        run: >
+          bash configure
+          --with-conf-name=${{ inputs.platform }}
+          ${{ matrix.flags }}
+          --with-version-opt=${GITHUB_ACTOR}-${GITHUB_SHA}
+          --with-boot-jdk=${{ steps.bootjdk.outputs.path }}
+          --with-jtreg=${{ steps.jtreg.outputs.path }}
+          --with-gtest=${{ steps.gtest.outputs.path }}
+          --with-zlib=system
+          --with-jmod-compress=zip-1
+          ${{ inputs.extra-conf-options }} ${{ inputs.configure-arguments }} || (
+          echo "Dumping config.log:" &&
+          cat config.log &&
+          exit 1)
+
       - name: Build JDK
         uses: mucommander/jdk/.github/actions/do-build@refs/heads/master
         with:
