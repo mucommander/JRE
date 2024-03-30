@@ -18,13 +18,13 @@ jobs:
 
       - name: 'Get the BootJDK'
         id: bootjdk
-        uses: ${GITHUB_WORKSPACE}/jdk/.github/actions/get-bootjdk
+        uses: ./jdk/.github/actions/get-bootjdk
         with:
           platform: macos-aarch64
 
       - name: 'Get JTReg'
         id: jtreg
-        uses: ${GITHUB_WORKSPACE}/jdk/.github/actions/get-jtreg
+        uses: ./jdk/.github/actions/get-jtreg
 
       - name: 'Install toolchain and dependencies'
         run: |
@@ -51,12 +51,12 @@ jobs:
           exit 1)
 
       - name: Build JDK
-        uses: ${GITHUB_WORKSPACE}/jdk/.github/actions/do-build
+        uses: ./jdk/.github/actions/do-build
         with:
           platform: macos-aarch64
           make-target: images
 
       - name: Adjust JDK
         run: >
-          ${GITHUB_WORKSPACE}/jdk/build/macosx-aarch64-server-release/images/jdk/bin/jlink  --module-path ${GITHUB_WORKSPACE}/macosx-aarch64-server-release/images/jdk/jmods --add-modules java.base,java.desktop,java.logging,java.naming,java.transaction.xa,java.rmi,java.management,java.security.jgss,java.sql,jdk.crypto.ec,jdk.httpserver,java.compiler --output ${GITHUB_WORKSPACE}/jre/macOS/aarch64/ --no-header-files  --no-man-pages  --strip-debug  --compress=2
+          ./jdk/build/macosx-aarch64-server-release/images/jdk/bin/jlink  --module-path ./jdk/build/macosx-aarch64-server-release/images/jdk/jmods --add-modules java.base,java.desktop,java.logging,java.naming,java.transaction.xa,java.rmi,java.management,java.security.jgss,java.sql,jdk.crypto.ec,jdk.httpserver,java.compiler --output ./macOS/aarch64/ --no-header-files  --no-man-pages  --strip-debug  --compress=2
           rm -rf ${GITHUB_WORKSPACE}/jre/macOS/aarch64/bin
