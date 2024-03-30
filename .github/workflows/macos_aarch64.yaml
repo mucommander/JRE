@@ -19,7 +19,7 @@ jobs:
       - name: 'Get the BootJDK'
         id: bootjdk
         uses: ./.github/actions/get-bootjdk
-        working-directory: ./jdk
+        working-directory: jdk
         with:
           platform: macos-aarch64
 
