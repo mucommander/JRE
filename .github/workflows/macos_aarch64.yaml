@@ -19,7 +19,7 @@ jobs:
         id: bootjdk
         uses: mucommander/jdk/.github/actions/get-bootjdk@refs/heads/master
         with:
-          platform: ${{ inputs.platform }}
+          platform: macos-aarch64
 
       - name: 'Get JTReg'
         id: jtreg
