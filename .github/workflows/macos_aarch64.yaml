@@ -1,0 +1,22 @@
+name: macOS aarch64
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Checkout JRE repository
+        uses: actions/checkout@v4
+
+      - name: Checkout JDK repository
+        uses: actions/checkout@v4
+        repository: mucommander/jdk
+
+      - name: Build JDK
+        uses: mucommander/jdk/.github/actions/do-build
+        with:
+          platform: macos-aarch64
+          make-target: images
+
