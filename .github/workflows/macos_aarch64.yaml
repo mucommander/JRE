@@ -18,14 +18,13 @@ jobs:
 
       - name: 'Get the BootJDK'
         id: bootjdk
-        uses: ./.github/actions/get-bootjdk
-        working-directory: jdk
+        uses: mucommander/jdk/.github/actions/get-bootjdk@refs/head/master
         with:
           platform: macos-aarch64
 
       - name: 'Get JTReg'
         id: jtreg
-        uses: ./jdk/.github/actions/get-jtreg
+        uses: mucommander/jdk/.github/actions/get-jtreg@refs/head/master
 
       - name: 'Install toolchain and dependencies'
         run: |
