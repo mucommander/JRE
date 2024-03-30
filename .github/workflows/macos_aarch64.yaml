@@ -14,7 +14,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: mucommander/jdk
-          path: jdk
 
       - name: 'Get the BootJDK'
         id: bootjdk
