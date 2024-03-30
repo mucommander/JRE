@@ -12,6 +12,7 @@ jobs:
 
       - name: Checkout JDK repository
         uses: actions/checkout@v4
-        repository: mucommander/jdk
+        with:
+          repository: mucommander/jdk
 
 
