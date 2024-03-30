@@ -18,13 +18,13 @@ jobs:
 
       - name: 'Get the BootJDK'
         id: bootjdk
-        uses: mucommander/jdk/.github/actions/get-bootjdk@refs/head/master
+        uses: mucommander/jdk/.github/actions/get-bootjdk@refs/heads/master
         with:
           platform: macos-aarch64
 
       - name: 'Get JTReg'
         id: jtreg
-        uses: mucommander/jdk/.github/actions/get-jtreg@refs/head/master
+        uses: mucommander/jdk/.github/actions/get-jtreg@refs/heads/master
 
       - name: 'Install toolchain and dependencies'
         run: |
@@ -51,7 +51,7 @@ jobs:
           exit 1)
 
       - name: Build JDK
-        uses: ./jdk/.github/actions/do-build
+        uses: mucommander/jdk/.github/actions/do-build@refs/heads/master
         with:
           platform: macos-aarch64
           make-target: images
