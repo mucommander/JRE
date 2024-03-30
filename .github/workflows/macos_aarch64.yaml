@@ -16,7 +16,7 @@ jobs:
           repository: mucommander/jdk
 
       - name: Build JDK
-        uses: mucommander/jdk/.github/actions/do-build@mucommander-1.4
+        uses: mucommander/jdk/.github/actions/do-build@refs/heads/master
         with:
           platform: macos-aarch64
           make-target: images
