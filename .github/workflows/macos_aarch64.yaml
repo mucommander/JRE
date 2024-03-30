@@ -17,13 +17,13 @@ jobs:
 
       - name: 'Get the BootJDK'
         id: bootjdk
-        uses: mucommander/jdk/.github/actions/get-bootjdk
+        uses: mucommander/jdk/.github/actions/get-bootjdk@refs/heads/master
         with:
           platform: ${{ inputs.platform }}
 
       - name: 'Get JTReg'
         id: jtreg
-        uses: mucommander/jdk/.github/actions/get-jtreg
+        uses: mucommander/jdk/.github/actions/get-jtreg@refs/heads/master
 
       - name: 'Install toolchain and dependencies'
         run: |
