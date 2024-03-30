@@ -53,7 +53,7 @@ jobs:
           make-target: images
 
       - name: Adjust JRE
-        run: >
+        run: |
           ./build/macosx-aarch64-server-release/images/jdk/bin/jlink  --module-path ./build/macosx-aarch64-server-release/images/jdk/jmods --add-modules java.base,java.desktop,java.logging,java.naming,java.transaction.xa,java.rmi,java.management,java.security.jgss,java.sql,jdk.crypto.ec,jdk.httpserver,java.compiler --output ./out/macOS/aarch64/ --no-header-files  --no-man-pages  --strip-debug  --compress=2
           rm -rf ./out/macOS/aarch64/bin
 
