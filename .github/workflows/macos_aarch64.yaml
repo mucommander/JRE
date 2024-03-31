@@ -58,10 +58,12 @@ jobs:
           rm -rf ./out/macOS/aarch64/bin
 
       - name: Compress JRE
-        run: zip jdk_macos_aarch64.zip ./out/*
+        run: |
+          mkdir /tmp/artifacts
+          zip /tmp/artifacts/jdk_macos_aarch64.zip ./out/*
 
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
           name: jdk_macos_aarch64.zip
-          path: .
+          path: /tmp/artifacts
