@@ -67,3 +67,4 @@ jobs:
         with:
           name: jdk_macos_aarch64.zip
           path: /tmp/artifacts
+          retention-days: 1
