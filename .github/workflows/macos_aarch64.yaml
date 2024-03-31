@@ -60,7 +60,7 @@ jobs:
       - name: Compress JRE
         run: |
           mkdir /tmp/artifacts
-          zip /tmp/artifacts/jdk_macos_aarch64.zip ./out/*
+          zip -r /tmp/artifacts/jdk_macos_aarch64.zip ./out/macOS
 
       - name: Upload artifact
         uses: actions/upload-artifact@master
