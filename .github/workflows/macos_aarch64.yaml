@@ -64,3 +64,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: jdk_macos_aarch64.zip
+          path: .
