@@ -1,0 +1,71 @@
+name: macOS-x64
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-12
+    steps:
+      - name: Checkout JDK repository
+        uses: actions/checkout@v4
+        with:
+          repository: mucommander/jdk
+
+      - name: 'Get the BootJDK'
+        id: bootjdk
+        uses: mucommander/jdk/.github/actions/get-bootjdk@refs/heads/master
+        with:
+          platform: macos-x64
+
+      - name: 'Get JTReg'
+        id: jtreg
+        uses: mucommander/jdk/.github/actions/get-jtreg@refs/heads/master
+
+      - name: 'Install toolchain and dependencies'
+        run: |
+          # Run Homebrew installation and xcode-select
+          brew install autoconf make
+          sudo xcode-select --switch /Applications/Xcode_14.3.1.app/Contents/Developer
+          # This will make GNU make available as 'make' and not only as 'gmake'
+          echo '/usr/local/opt/make/libexec/gnubin' >> $GITHUB_PATH
+
+      - name: 'Configure'
+        run: >
+          bash configure
+          --with-conf-name=${{ inputs.platform }}
+          ${{ matrix.flags }}
+          --with-version-opt=${GITHUB_ACTOR}-${GITHUB_SHA}
+          --with-boot-jdk=${{ steps.bootjdk.outputs.path }}
+          --with-jtreg=${{ steps.jtreg.outputs.path }}
+          --with-gtest=${{ steps.gtest.outputs.path }}
+          --with-zlib=system
+          --with-jmod-compress=zip-1
+          ${{ inputs.extra-conf-options }} ${{ inputs.configure-arguments }} || (
+          echo "Dumping config.log:" &&
+          cat config.log &&
+          exit 1)
+
+      - name: Build JDK
+        uses: mucommander/jdk/.github/actions/do-build@refs/heads/master
+        with:
+          platform: macos-x64
+          make-target: images
+
+      - name: Adjust JRE
+        run: |
+          ./build/macosx-x86_64-server-release/images/jdk/bin/jlink  --module-path ./build/macosx-x86_64-server-release/images/jdk/jmods --add-modules java.base,java.desktop,java.logging,java.naming,java.transaction.xa,java.rmi,java.management,java.security.jgss,java.sql,jdk.crypto.ec,jdk.httpserver,java.compiler --output ./out/macOS/x86_64/ --no-header-files  --no-man-pages  --strip-debug  --compress=2
+          rm -rf ./out/macOS/x86_64/bin
+
+      - name: Compress JRE
+        run: |
+          mkdir /tmp/artifacts
+          zip -r /tmp/artifacts/jdk_macos_x86_64.zip ./out/macOS
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: jdk_macos_x86_64.zip
+          path: /tmp/artifacts
+          retention-days: 1
+          if-no-files-found: error
