@@ -56,17 +56,11 @@ jobs:
         run: |
           ./build/macosx-aarch64-server-release/images/jdk/bin/jlink  --module-path ./build/macosx-aarch64-server-release/images/jdk/jmods --add-modules java.base,java.desktop,java.logging,java.naming,java.transaction.xa,java.rmi,java.management,java.security.jgss,java.sql,jdk.crypto.ec,jdk.httpserver,java.compiler --output ./out/macOS/aarch64/ --no-header-files  --no-man-pages  --strip-debug  --compress=2
           rm -rf ./out/macOS/aarch64/bin
-          chmod +x ./out/macOS/aarch64/lib/jspawnhelper
-
-      - name: Compress JRE
-        run: |
-          mkdir /tmp/artifacts
-          zip -r /tmp/artifacts/jdk_macos_aarch64.zip ./out/macOS
 
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
-          name: jdk_macos_aarch64.zip
-          path: /tmp/artifacts
+          name: jdk_macos_aarch64
+          path: ./out/macOS
           retention-days: 1
           if-no-files-found: error
