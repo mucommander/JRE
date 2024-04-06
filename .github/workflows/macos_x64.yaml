@@ -58,15 +58,10 @@ jobs:
           rm -rf ./out/macOS/x86_64/bin
           chmod +x ./out/macOS/x86_64/lib/jspawnhelper
 
-      - name: Compress JRE
-        run: |
-          mkdir /tmp/artifacts
-          zip -r /tmp/artifacts/jdk_macos_x86_64.zip ./out/macOS
-
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
-          name: jdk_macos_x86_64.zip
-          path: /tmp/artifacts
+          name: jdk_macos_x86_64
+          path: ./out/macOS
           retention-days: 1
           if-no-files-found: error
