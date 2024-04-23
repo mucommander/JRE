@@ -1,0 +1,79 @@
+name: windows-x64
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout JDK repository
+        uses: actions/checkout@v4
+        with:
+          repository: mucommander/jdk
+
+      - name: 'Get the BootJDK'
+        id: bootjdk
+        uses: mucommander/jdk/.github/actions/get-bootjdk@refs/heads/master
+        with:
+          platform: windows-x64
+
+      - name: 'Get JTReg'
+        id: jtreg
+        uses: mucommander/jdk/.github/actions/get-jtreg@refs/heads/master
+
+      - name: 'Check toolchain installed'
+        id: toolchain-check
+        run: |
+          set +e
+          '/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/vc/auxiliary/build/vcvars64.bat' -vcvars_ver=14.29
+          if [ $? -eq 0 ]; then
+            echo "Toolchain is already installed"
+            echo "toolchain-installed=true" >> $GITHUB_OUTPUT
+          else
+            echo "Toolchain is not yet installed"
+            echo "toolchain-installed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 'Install toolchain and dependencies'
+        run: |
+          # Run Visual Studio Installer
+          '/c/Program Files (x86)/Microsoft Visual Studio/Installer/vs_installer.exe' \
+            modify --quiet --installPath 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise' \
+            --add Microsoft.VisualStudio.Component.VC.14.29.x86.x64
+        if: steps.toolchain-check.outputs.toolchain-installed != 'true'
+
+      - name: 'Configure'
+        run: >
+          bash configure
+          --with-conf-name=${{ inputs.platform }}
+          ${{ matrix.flags }}
+          --with-version-opt=${GITHUB_ACTOR}-${GITHUB_SHA}
+          --with-boot-jdk=${{ steps.bootjdk.outputs.path }}
+          --with-jtreg=${{ steps.jtreg.outputs.path }}
+          --with-gtest=${{ steps.gtest.outputs.path }}
+          --with-zlib=system
+          --with-jmod-compress=zip-1
+          ${{ inputs.extra-conf-options }} ${{ inputs.configure-arguments }} || (
+          echo "Dumping config.log:" &&
+          cat config.log &&
+          exit 1)
+
+      - name: Build JDK
+        uses: mucommander/jdk/.github/actions/do-build@refs/heads/master
+        with:
+          platform: windows-x64
+          make-target: images
+
+      - name: Adjust JRE
+        run: |
+          ./build/windows-x86_64-server-release/images/jdk/bin/jlink  --module-path ./build/windows-x86_64-server-release/images/jdk/jmods --add-modules java.base,java.desktop,java.logging,java.naming,java.transaction.xa,java.rmi,java.management,java.security.jgss,java.sql,jdk.crypto.ec,jdk.httpserver,java.compiler --output ./out/windows/ --no-header-files  --no-man-pages  --strip-debug  --compress=2
+          rm -rf ./out/windows/bin
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: jdk_windows_x86_64
+          path: ./out/windows
+          retention-days: 1
+          if-no-files-found: error
