@@ -1,0 +1,62 @@
+name: macOS-x64
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout JDK repository
+        uses: actions/checkout@v4
+        with:
+          repository: mucommander/jdk
+
+      - name: 'Get the BootJDK'
+        id: bootjdk
+        uses: mucommander/jdk/.github/actions/get-bootjdk@refs/heads/master
+        with:
+          platform: linux-x64
+
+      - name: 'Get JTReg'
+        id: jtreg
+        uses: mucommander/jdk/.github/actions/get-jtreg@refs/heads/master
+
+      - name: 'Get JTReg'
+        id: jtreg
+        uses: mucommander/jdk/.github/actions/get-jtreg@refs/heads/master
+
+      - name: 'Configure'
+        run: >
+          bash configure
+          --with-conf-name=${{ inputs.platform }}
+          ${{ matrix.flags }}
+          --with-version-opt=${GITHUB_ACTOR}-${GITHUB_SHA}
+          --with-boot-jdk=${{ steps.bootjdk.outputs.path }}
+          --with-jtreg=${{ steps.jtreg.outputs.path }}
+          --with-gtest=${{ steps.gtest.outputs.path }}
+          --with-zlib=system
+          --with-jmod-compress=zip-1
+          ${{ inputs.extra-conf-options }} ${{ inputs.configure-arguments }} || (
+          echo "Dumping config.log:" &&
+          cat config.log &&
+          exit 1)
+
+      - name: Build JDK
+        uses: mucommander/jdk/.github/actions/do-build@refs/heads/master
+        with:
+          platform: linux-x64
+          make-target: images
+
+      - name: Adjust JRE
+        run: 
+          ./build/linux-x86_64-server-release/images/jdk/bin/jlink  --module-path ./build/linux-x86_64-server-release/images/jdk/jmods --add-modules java.base,java.desktop,java.logging,java.naming,java.transaction.xa,java.rmi,java.management,java.security.jgss,java.sql,jdk.crypto.ec,jdk.httpserver,java.compiler --output ./out/linux/ --no-header-files  --no-man-pages  --strip-debug  --compress=2
+          rm -rf ./out/linux/bin
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: jdk_linux_x86_64
+          path: ./out/linux
+          retention-days: 1
+          if-no-files-found: error
