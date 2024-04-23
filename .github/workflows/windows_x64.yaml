@@ -15,6 +15,9 @@ jobs:
         with:
           repository: mucommander/jdk
 
+      - name: 'Get MSYS2'
+        uses: mucommander/jdk/.github/actions/get-msys2
+
       - name: 'Get the BootJDK'
         id: bootjdk
         uses: mucommander/jdk/.github/actions/get-bootjdk@refs/heads/master
