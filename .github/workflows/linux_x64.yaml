@@ -22,6 +22,18 @@ jobs:
         id: jtreg
         uses: mucommander/jdk/.github/actions/get-jtreg@refs/heads/master
 
+      # Upgrading apt to solve libc6 installation bugs, see JDK-8260460.
+      - name: 'Install toolchain and dependencies'
+        run: |
+          # Install dependencies using apt-get
+          if [[ '${{ inputs.apt-architecture }}' != '' ]]; then
+            sudo dpkg --add-architecture ${{ inputs.apt-architecture }}
+          fi
+          sudo apt-get update
+          sudo apt-get install --only-upgrade apt
+          sudo apt-get install gcc-10-multilib g++-10-multilib libxrandr-dev libxtst-dev libcups2-dev libasound2-dev
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10
+
       - name: 'Configure'
         run: >
           bash configure
