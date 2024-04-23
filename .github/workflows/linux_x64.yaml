@@ -22,10 +22,6 @@ jobs:
         id: jtreg
         uses: mucommander/jdk/.github/actions/get-jtreg@refs/heads/master
 
-      - name: 'Get JTReg'
-        id: jtreg
-        uses: mucommander/jdk/.github/actions/get-jtreg@refs/heads/master
-
       - name: 'Configure'
         run: >
           bash configure
