@@ -1,6 +1,6 @@
 # JRE
 
-macOS: customized build on top of 20+36
+macOS: 24-ea+15
 win:   20.0.1+9
 linux: 20.0.1+9
 
