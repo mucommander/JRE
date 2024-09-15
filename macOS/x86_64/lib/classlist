@@ -66,21 +66,16 @@ java/lang/ClassFrameInfo
 java/lang/ClassLoader
 java/lang/ClassLoader$ParallelLoaders
 java/lang/ClassNotFoundException
-java/lang/ClassValue
-java/lang/ClassValue$ClassValueMap
-java/lang/ClassValue$Entry
-java/lang/ClassValue$Identity
-java/lang/ClassValue$Version
 java/lang/Cloneable
 java/lang/Comparable
 java/lang/CompoundEnumeration
 java/lang/Double
 java/lang/Enum
-java/lang/Enum$EnumDesc
 java/lang/Error
 java/lang/Exception
 java/lang/Float
 java/lang/IllegalArgumentException
+java/lang/IllegalCallerException
 java/lang/IllegalMonitorStateException
 java/lang/IncompatibleClassChangeError
 java/lang/Integer
@@ -137,14 +132,16 @@ java/lang/StringBuffer
 java/lang/StringBuilder
 java/lang/StringCoding
 java/lang/StringConcatHelper
+java/lang/StringConcatHelper$Concat1
+java/lang/StringConcatHelper$StringConcatBase
 java/lang/StringLatin1
-java/lang/StringLatin1$CharsSpliterator
 java/lang/StringUTF16
-java/lang/StringUTF16$CharsSpliterator
 java/lang/System
 java/lang/System$2
+java/lang/System$In
 java/lang/System$Logger
 java/lang/System$LoggerFinder
+java/lang/System$Out
 java/lang/Terminator
 java/lang/Terminator$1
 java/lang/Thread
@@ -165,112 +162,73 @@ java/lang/VirtualThread
 java/lang/Void
 java/lang/annotation/Annotation
 java/lang/classfile/AccessFlags
+java/lang/classfile/Annotation
+java/lang/classfile/AnnotationElement
 java/lang/classfile/Attribute
 java/lang/classfile/AttributeMapper
 java/lang/classfile/AttributeMapper$AttributeStability
+java/lang/classfile/AttributedElement
 java/lang/classfile/Attributes
-java/lang/classfile/Attributes$1
-java/lang/classfile/Attributes$10
-java/lang/classfile/Attributes$11
-java/lang/classfile/Attributes$12
-java/lang/classfile/Attributes$13
-java/lang/classfile/Attributes$14
-java/lang/classfile/Attributes$15
-java/lang/classfile/Attributes$16
-java/lang/classfile/Attributes$17
-java/lang/classfile/Attributes$18
-java/lang/classfile/Attributes$19
-java/lang/classfile/Attributes$2
-java/lang/classfile/Attributes$20
-java/lang/classfile/Attributes$21
-java/lang/classfile/Attributes$22
-java/lang/classfile/Attributes$23
-java/lang/classfile/Attributes$24
-java/lang/classfile/Attributes$25
-java/lang/classfile/Attributes$26
-java/lang/classfile/Attributes$27
-java/lang/classfile/Attributes$28
-java/lang/classfile/Attributes$29
-java/lang/classfile/Attributes$3
-java/lang/classfile/Attributes$30
-java/lang/classfile/Attributes$31
-java/lang/classfile/Attributes$32
-java/lang/classfile/Attributes$33
-java/lang/classfile/Attributes$34
-java/lang/classfile/Attributes$35
-java/lang/classfile/Attributes$36
-java/lang/classfile/Attributes$4
-java/lang/classfile/Attributes$5
-java/lang/classfile/Attributes$6
-java/lang/classfile/Attributes$7
-java/lang/classfile/Attributes$8
-java/lang/classfile/Attributes$9
 java/lang/classfile/BootstrapMethodEntry
 java/lang/classfile/BufWriter
 java/lang/classfile/ClassBuilder
 java/lang/classfile/ClassElement
 java/lang/classfile/ClassFile
-java/lang/classfile/ClassFile$AttributeMapperOption
-java/lang/classfile/ClassFile$AttributesProcessingOption
-java/lang/classfile/ClassFile$ClassHierarchyResolverOption
-java/lang/classfile/ClassFile$ConstantPoolSharingOption
-java/lang/classfile/ClassFile$DeadCodeOption
-java/lang/classfile/ClassFile$DeadLabelsOption
-java/lang/classfile/ClassFile$DebugElementsOption
-java/lang/classfile/ClassFile$LineNumbersOption
-java/lang/classfile/ClassFile$Option
-java/lang/classfile/ClassFile$ShortJumpsOption
-java/lang/classfile/ClassFile$StackMapsOption
 java/lang/classfile/ClassFileBuilder
 java/lang/classfile/ClassFileElement
 java/lang/classfile/ClassHierarchyResolver
 java/lang/classfile/ClassHierarchyResolver$1Factory
 java/lang/classfile/ClassHierarchyResolver$ClassHierarchyInfo
+java/lang/classfile/ClassModel
+java/lang/classfile/ClassReader
 java/lang/classfile/CodeBuilder
 java/lang/classfile/CodeElement
+java/lang/classfile/CompoundElement
+java/lang/classfile/CustomAttribute
+java/lang/classfile/FieldBuilder
 java/lang/classfile/FieldElement
-java/lang/classfile/Instruction
+java/lang/classfile/FieldModel
+java/lang/classfile/Interfaces
 java/lang/classfile/Label
 java/lang/classfile/MethodBuilder
 java/lang/classfile/MethodElement
+java/lang/classfile/MethodModel
 java/lang/classfile/Opcode
 java/lang/classfile/Opcode$Kind
 java/lang/classfile/PseudoInstruction
+java/lang/classfile/Superclass
 java/lang/classfile/TypeKind
-java/lang/classfile/WritableElement
+java/lang/classfile/attribute/RuntimeVisibleAnnotationsAttribute
+java/lang/classfile/attribute/SourceFileAttribute
 java/lang/classfile/constantpool/AnnotationConstantValueEntry
 java/lang/classfile/constantpool/ClassEntry
 java/lang/classfile/constantpool/ConstantPool
 java/lang/classfile/constantpool/ConstantPoolBuilder
+java/lang/classfile/constantpool/ConstantValueEntry
+java/lang/classfile/constantpool/DoubleEntry
+java/lang/classfile/constantpool/FieldRefEntry
+java/lang/classfile/constantpool/IntegerEntry
+java/lang/classfile/constantpool/InterfaceMethodRefEntry
 java/lang/classfile/constantpool/LoadableConstantEntry
+java/lang/classfile/constantpool/LongEntry
+java/lang/classfile/constantpool/MemberRefEntry
+java/lang/classfile/constantpool/MethodRefEntry
+java/lang/classfile/constantpool/NameAndTypeEntry
 java/lang/classfile/constantpool/PoolEntry
 java/lang/classfile/constantpool/Utf8Entry
-java/lang/classfile/instruction/BranchInstruction
-java/lang/classfile/instruction/ConstantInstruction
-java/lang/classfile/instruction/ConstantInstruction$IntrinsicConstantInstruction
 java/lang/classfile/instruction/LabelTarget
-java/lang/classfile/instruction/LoadInstruction
-java/lang/classfile/instruction/ReturnInstruction
 java/lang/classfile/instruction/SwitchCase
-java/lang/classfile/instruction/TableSwitchInstruction
-java/lang/classfile/instruction/TypeCheckInstruction
 java/lang/constant/ClassDesc
 java/lang/constant/Constable
 java/lang/constant/ConstantDesc
 java/lang/constant/ConstantDescs
-java/lang/constant/ConstantUtils
 java/lang/constant/DirectMethodHandleDesc
 java/lang/constant/DirectMethodHandleDesc$Kind
-java/lang/constant/DirectMethodHandleDescImpl
-java/lang/constant/DirectMethodHandleDescImpl$1
 java/lang/constant/DynamicConstantDesc
 java/lang/constant/DynamicConstantDesc$AnonymousDynamicConstantDesc
 java/lang/constant/MethodHandleDesc
 java/lang/constant/MethodHandleDesc$1
 java/lang/constant/MethodTypeDesc
-java/lang/constant/MethodTypeDescImpl
-java/lang/constant/PrimitiveClassDescImpl
-java/lang/constant/ReferenceClassDescImpl
 java/lang/invoke/AbstractValidatingLambdaMetafactory
 java/lang/invoke/BootstrapMethodInvoker
 java/lang/invoke/BoundMethodHandle
@@ -282,18 +240,8 @@ java/lang/invoke/BoundMethodHandle$Species_DL
 java/lang/invoke/BoundMethodHandle$Species_I
 java/lang/invoke/BoundMethodHandle$Species_IL
 java/lang/invoke/BoundMethodHandle$Species_L
-java/lang/invoke/BoundMethodHandle$Species_LI
-java/lang/invoke/BoundMethodHandle$Species_LJ
 java/lang/invoke/BoundMethodHandle$Species_LL
-java/lang/invoke/BoundMethodHandle$Species_LLJ
 java/lang/invoke/BoundMethodHandle$Species_LLL
-java/lang/invoke/BoundMethodHandle$Species_LLLJ
-java/lang/invoke/BoundMethodHandle$Species_LLLL
-java/lang/invoke/BoundMethodHandle$Species_LLLLL
-java/lang/invoke/BoundMethodHandle$Species_LLLLLL
-java/lang/invoke/BoundMethodHandle$Species_LLLLLLL
-java/lang/invoke/BoundMethodHandle$Species_LLLLLLLL
-java/lang/invoke/BoundMethodHandle$Species_LLLLLLLLL
 java/lang/invoke/CallSite
 java/lang/invoke/ClassSpecializer
 java/lang/invoke/ClassSpecializer$1
@@ -311,9 +259,16 @@ java/lang/invoke/DirectMethodHandle$Holder
 java/lang/invoke/DirectMethodHandle$Interface
 java/lang/invoke/InfoFromMemberName
 java/lang/invoke/InnerClassLambdaMetafactory
-java/lang/invoke/InnerClassLambdaMetafactory$ForwardingMethodGenerator
+java/lang/invoke/InnerClassLambdaMetafactory$1
+java/lang/invoke/InnerClassLambdaMetafactory$3
+java/lang/invoke/InnerClassLambdaMetafactory$6
 java/lang/invoke/InvokerBytecodeGenerator
 java/lang/invoke/InvokerBytecodeGenerator$1
+java/lang/invoke/InvokerBytecodeGenerator$2
+java/lang/invoke/InvokerBytecodeGenerator$3
+java/lang/invoke/InvokerBytecodeGenerator$4
+java/lang/invoke/InvokerBytecodeGenerator$4$1
+java/lang/invoke/InvokerBytecodeGenerator$8
 java/lang/invoke/InvokerBytecodeGenerator$ClassData
 java/lang/invoke/Invokers
 java/lang/invoke/Invokers$Holder
@@ -325,7 +280,6 @@ java/lang/invoke/LambdaForm$Name
 java/lang/invoke/LambdaForm$NamedFunction
 java/lang/invoke/LambdaFormBuffer
 java/lang/invoke/LambdaFormEditor
-java/lang/invoke/LambdaFormEditor$1
 java/lang/invoke/LambdaFormEditor$Transform
 java/lang/invoke/LambdaFormEditor$TransformKey
 java/lang/invoke/LambdaMetafactory
@@ -335,16 +289,9 @@ java/lang/invoke/MemberName$Factory
 java/lang/invoke/MethodHandle
 java/lang/invoke/MethodHandleImpl
 java/lang/invoke/MethodHandleImpl$1
-java/lang/invoke/MethodHandleImpl$ArrayAccess
-java/lang/invoke/MethodHandleImpl$ArrayAccessor
-java/lang/invoke/MethodHandleImpl$ArrayAccessor$1
 java/lang/invoke/MethodHandleImpl$AsVarargsCollector
 java/lang/invoke/MethodHandleImpl$Intrinsic
 java/lang/invoke/MethodHandleImpl$IntrinsicMethodHandle
-java/lang/invoke/MethodHandleImpl$Makers
-java/lang/invoke/MethodHandleImpl$Makers$1
-java/lang/invoke/MethodHandleImpl$Makers$2
-java/lang/invoke/MethodHandleImpl$Makers$3
 java/lang/invoke/MethodHandleInfo
 java/lang/invoke/MethodHandleNatives
 java/lang/invoke/MethodHandleNatives$CallSiteContext
@@ -362,6 +309,19 @@ java/lang/invoke/MutableCallSite
 java/lang/invoke/ResolvedMethodName
 java/lang/invoke/SimpleMethodHandle
 java/lang/invoke/StringConcatFactory
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$1
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$2
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$3
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$3$1
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$3$2
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$3$3
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$3$4
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$4
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$5
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$6
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$7
+java/lang/invoke/StringConcatFactory$InlineHiddenClassStrategy$MethodHandlePair
 java/lang/invoke/TypeConvertingMethodAdapter
 java/lang/invoke/TypeDescriptor
 java/lang/invoke/TypeDescriptor$OfField
@@ -391,7 +351,6 @@ java/lang/invoke/VarHandleLongs$FieldInstanceReadWrite
 java/lang/invoke/VarHandleReferences$FieldInstanceReadOnly
 java/lang/invoke/VarHandleReferences$FieldInstanceReadWrite
 java/lang/invoke/VarHandles
-java/lang/invoke/VarHandles$1
 java/lang/invoke/VolatileCallSite
 java/lang/module/Configuration
 java/lang/module/ModuleDescriptor
@@ -462,13 +421,7 @@ java/lang/reflect/Parameter
 java/lang/reflect/RecordComponent
 java/lang/reflect/ReflectAccess
 java/lang/reflect/Type
-java/lang/runtime/ObjectMethods
-java/lang/runtime/ObjectMethods$1
 java/lang/runtime/SwitchBootstraps
-java/lang/runtime/SwitchBootstraps$1Element
-java/lang/runtime/SwitchBootstraps$EnumMap
-java/lang/runtime/SwitchBootstraps$ResolvedEnumLabels
-java/lang/runtime/SwitchBootstraps$TypePairs
 java/math/BigInteger
 java/math/RoundingMode
 java/net/DefaultInterface
@@ -577,9 +530,12 @@ java/text/FieldPosition
 java/text/Format
 java/text/Format$Field
 java/text/Format$FieldDelegate
+java/text/Format$StringBuf
 java/text/NumberFormat
 java/text/NumberFormat$Field
 java/text/SimpleDateFormat
+java/text/StringBufFactory
+java/text/StringBufFactory$StringBuilderImpl
 java/text/spi/BreakIteratorProvider
 java/text/spi/CollatorProvider
 java/text/spi/DateFormatProvider
@@ -671,6 +627,7 @@ java/util/ArrayList$ArrayListSpliterator
 java/util/ArrayList$Itr
 java/util/ArrayList$SubList
 java/util/Arrays
+java/util/Arrays$ArrayItr
 java/util/Arrays$ArrayList
 java/util/Arrays$LegacyMergeSort
 java/util/BitSet
@@ -680,7 +637,6 @@ java/util/Collection
 java/util/Collections
 java/util/Collections$1
 java/util/Collections$3
-java/util/Collections$CopiesList
 java/util/Collections$EmptyEnumeration
 java/util/Collections$EmptyIterator
 java/util/Collections$EmptyList
@@ -695,7 +651,6 @@ java/util/Collections$SynchronizedSet
 java/util/Collections$UnmodifiableCollection
 java/util/Collections$UnmodifiableCollection$1
 java/util/Collections$UnmodifiableList
-java/util/Collections$UnmodifiableMap
 java/util/Collections$UnmodifiableRandomAccessList
 java/util/Collections$UnmodifiableSet
 java/util/Comparator
@@ -731,7 +686,6 @@ java/util/Hashtable
 java/util/Hashtable$Entry
 java/util/Hashtable$Enumerator
 java/util/HexFormat
-java/util/HexFormat$Case
 java/util/IdentityHashMap
 java/util/IdentityHashMap$IdentityHashMapIterator
 java/util/IdentityHashMap$KeyIterator
@@ -742,6 +696,8 @@ java/util/ImmutableCollections$AbstractImmutableCollection
 java/util/ImmutableCollections$AbstractImmutableList
 java/util/ImmutableCollections$AbstractImmutableMap
 java/util/ImmutableCollections$AbstractImmutableSet
+java/util/ImmutableCollections$Access
+java/util/ImmutableCollections$Access$1
 java/util/ImmutableCollections$List12
 java/util/ImmutableCollections$ListItr
 java/util/ImmutableCollections$ListN
@@ -767,14 +723,13 @@ java/util/ListResourceBundle
 java/util/Locale
 java/util/Locale$Builder
 java/util/Locale$Category
-java/util/Locale$LocaleKey
+java/util/Locale$LocaleCache
 java/util/Map
 java/util/Map$Entry
 java/util/NavigableMap
 java/util/NavigableSet
 java/util/Objects
 java/util/Optional
-java/util/OptionalInt
 java/util/Properties
 java/util/Properties$EntrySet
 java/util/Properties$LineReader
@@ -789,8 +744,6 @@ java/util/ResourceBundle$Control
 java/util/ResourceBundle$NoFallbackControl
 java/util/ResourceBundle$ResourceBundleProviderHelper
 java/util/ResourceBundle$SingleFormatControl
-java/util/ReverseOrderListView
-java/util/ReverseOrderListView$Rand
 java/util/SequencedCollection
 java/util/SequencedMap
 java/util/SequencedSet
@@ -806,28 +759,16 @@ java/util/Set
 java/util/SortedMap
 java/util/SortedSet
 java/util/Spliterator
-java/util/Spliterator$OfDouble
-java/util/Spliterator$OfInt
-java/util/Spliterator$OfLong
-java/util/Spliterator$OfPrimitive
 java/util/Spliterators
 java/util/Spliterators$1Adapter
 java/util/Spliterators$AbstractSpliterator
 java/util/Spliterators$ArraySpliterator
 java/util/Spliterators$EmptySpliterator
-java/util/Spliterators$EmptySpliterator$OfDouble
-java/util/Spliterators$EmptySpliterator$OfInt
-java/util/Spliterators$EmptySpliterator$OfLong
 java/util/Spliterators$EmptySpliterator$OfRef
 java/util/Spliterators$IteratorSpliterator
 java/util/StringJoiner
 java/util/TimSort
 java/util/TimeZone
-java/util/TreeMap
-java/util/TreeMap$Entry
-java/util/TreeMap$EntryIterator
-java/util/TreeMap$EntrySet
-java/util/TreeMap$PrivateEntryIterator
 java/util/WeakHashMap
 java/util/WeakHashMap$Entry
 java/util/WeakHashMap$KeySet
@@ -863,13 +804,13 @@ java/util/concurrent/ExecutorService
 java/util/concurrent/ForkJoinPool
 java/util/concurrent/ForkJoinPool$2
 java/util/concurrent/ForkJoinPool$DefaultForkJoinWorkerThreadFactory
+java/util/concurrent/ForkJoinPool$DefaultForkJoinWorkerThreadFactory$1
 java/util/concurrent/ForkJoinPool$ForkJoinWorkerThreadFactory
 java/util/concurrent/ForkJoinPool$ManagedBlocker
 java/util/concurrent/ForkJoinPool$WorkQueue
 java/util/concurrent/ForkJoinTask
 java/util/concurrent/ForkJoinTask$Aux
 java/util/concurrent/ForkJoinWorkerThread
-java/util/concurrent/ForkJoinWorkerThread$InnocuousForkJoinWorkerThread
 java/util/concurrent/Future
 java/util/concurrent/ThreadFactory
 java/util/concurrent/ThreadLocalRandom
@@ -897,12 +838,9 @@ java/util/function/BiPredicate
 java/util/function/BinaryOperator
 java/util/function/Consumer
 java/util/function/Function
-java/util/function/IntConsumer
 java/util/function/IntFunction
-java/util/function/IntPredicate
 java/util/function/Predicate
 java/util/function/Supplier
-java/util/function/UnaryOperator
 java/util/jar/Attributes
 java/util/jar/Attributes$Name
 java/util/jar/JarEntry
@@ -987,17 +925,15 @@ java/util/stream/DistinctOps$1$2
 java/util/stream/FindOps
 java/util/stream/FindOps$FindOp
 java/util/stream/FindOps$FindSink
-java/util/stream/FindOps$FindSink$OfInt
 java/util/stream/FindOps$FindSink$OfRef
 java/util/stream/ForEachOps
 java/util/stream/ForEachOps$ForEachOp
 java/util/stream/ForEachOps$ForEachOp$OfRef
-java/util/stream/IntPipeline
-java/util/stream/IntPipeline$10
-java/util/stream/IntPipeline$10$1
-java/util/stream/IntPipeline$Head
-java/util/stream/IntPipeline$StatelessOp
-java/util/stream/IntStream
+java/util/stream/MatchOps
+java/util/stream/MatchOps$1MatchSink
+java/util/stream/MatchOps$BooleanTerminalSink
+java/util/stream/MatchOps$MatchKind
+java/util/stream/MatchOps$MatchOp
 java/util/stream/Node
 java/util/stream/Node$Builder
 java/util/stream/Node$OfDouble
@@ -1025,14 +961,12 @@ java/util/stream/ReferencePipeline$2$1
 java/util/stream/ReferencePipeline$3
 java/util/stream/ReferencePipeline$3$1
 java/util/stream/ReferencePipeline$7
-java/util/stream/ReferencePipeline$7$1
+java/util/stream/ReferencePipeline$7$1FlatMap
 java/util/stream/ReferencePipeline$Head
 java/util/stream/ReferencePipeline$StatefulOp
 java/util/stream/ReferencePipeline$StatelessOp
 java/util/stream/Sink
-java/util/stream/Sink$ChainedInt
 java/util/stream/Sink$ChainedReference
-java/util/stream/Sink$OfInt
 java/util/stream/SpinedBuffer
 java/util/stream/Stream
 java/util/stream/Stream$Builder
@@ -1041,7 +975,6 @@ java/util/stream/StreamOpFlag$MaskBuilder
 java/util/stream/StreamOpFlag$Type
 java/util/stream/StreamShape
 java/util/stream/StreamSupport
-java/util/stream/Streams
 java/util/stream/Streams$AbstractStreamBuilderImpl
 java/util/stream/Streams$StreamBuilderImpl
 java/util/stream/TerminalOp
@@ -1083,30 +1016,36 @@ jdk/internal/access/JavaNetUriAccess
 jdk/internal/access/JavaNioAccess
 jdk/internal/access/JavaSecurityAccess
 jdk/internal/access/JavaSecurityPropertiesAccess
+jdk/internal/access/JavaUtilCollectionAccess
 jdk/internal/access/JavaUtilConcurrentFJPAccess
 jdk/internal/access/JavaUtilJarAccess
 jdk/internal/access/JavaUtilResourceBundleAccess
 jdk/internal/access/JavaUtilZipFileAccess
 jdk/internal/access/SharedSecrets
 jdk/internal/classfile/impl/AbstractAttributeMapper
+jdk/internal/classfile/impl/AbstractAttributeMapper$CodeMapper
+jdk/internal/classfile/impl/AbstractAttributeMapper$RuntimeVisibleAnnotationsMapper
+jdk/internal/classfile/impl/AbstractAttributeMapper$SourceFileMapper
+jdk/internal/classfile/impl/AbstractAttributeMapper$StackMapTableMapper
 jdk/internal/classfile/impl/AbstractDirectBuilder
 jdk/internal/classfile/impl/AbstractElement
-jdk/internal/classfile/impl/AbstractInstruction
 jdk/internal/classfile/impl/AbstractInstruction$SwitchCaseImpl
-jdk/internal/classfile/impl/AbstractInstruction$UnboundBranchInstruction
-jdk/internal/classfile/impl/AbstractInstruction$UnboundInstruction
-jdk/internal/classfile/impl/AbstractInstruction$UnboundIntrinsicConstantInstruction
-jdk/internal/classfile/impl/AbstractInstruction$UnboundLoadInstruction
-jdk/internal/classfile/impl/AbstractInstruction$UnboundReturnInstruction
-jdk/internal/classfile/impl/AbstractInstruction$UnboundTableSwitchInstruction
-jdk/internal/classfile/impl/AbstractInstruction$UnboundTypeCheckInstruction
 jdk/internal/classfile/impl/AbstractPoolEntry
+jdk/internal/classfile/impl/AbstractPoolEntry$AbstractMemberRefEntry
 jdk/internal/classfile/impl/AbstractPoolEntry$AbstractNamedEntry
 jdk/internal/classfile/impl/AbstractPoolEntry$AbstractRefEntry
+jdk/internal/classfile/impl/AbstractPoolEntry$AbstractRefsEntry
 jdk/internal/classfile/impl/AbstractPoolEntry$ClassEntryImpl
+jdk/internal/classfile/impl/AbstractPoolEntry$FieldRefEntryImpl
+jdk/internal/classfile/impl/AbstractPoolEntry$IntegerEntryImpl
+jdk/internal/classfile/impl/AbstractPoolEntry$InterfaceMethodRefEntryImpl
+jdk/internal/classfile/impl/AbstractPoolEntry$MethodRefEntryImpl
+jdk/internal/classfile/impl/AbstractPoolEntry$NameAndTypeEntryImpl
 jdk/internal/classfile/impl/AbstractPoolEntry$Utf8EntryImpl
 jdk/internal/classfile/impl/AbstractPoolEntry$Utf8EntryImpl$State
 jdk/internal/classfile/impl/AccessFlagsImpl
+jdk/internal/classfile/impl/AnnotationImpl
+jdk/internal/classfile/impl/AnnotationReader
 jdk/internal/classfile/impl/AttributeHolder
 jdk/internal/classfile/impl/BootstrapMethodEntryImpl
 jdk/internal/classfile/impl/BoundAttribute
@@ -1114,38 +1053,55 @@ jdk/internal/classfile/impl/BufWriterImpl
 jdk/internal/classfile/impl/BytecodeHelpers
 jdk/internal/classfile/impl/BytecodeHelpers$1
 jdk/internal/classfile/impl/ClassFileImpl
-jdk/internal/classfile/impl/ClassFileImpl$1
-jdk/internal/classfile/impl/ClassFileImpl$AttributeMapperOptionImpl
-jdk/internal/classfile/impl/ClassFileImpl$ClassHierarchyResolverOptionImpl
 jdk/internal/classfile/impl/ClassHierarchyImpl
 jdk/internal/classfile/impl/ClassHierarchyImpl$CachedClassHierarchyResolver
 jdk/internal/classfile/impl/ClassHierarchyImpl$CachedClassHierarchyResolver$1
 jdk/internal/classfile/impl/ClassHierarchyImpl$ClassHierarchyInfoImpl
 jdk/internal/classfile/impl/ClassHierarchyImpl$ClassLoadingClassHierarchyResolver
 jdk/internal/classfile/impl/ClassHierarchyImpl$ClassLoadingClassHierarchyResolver$1
+jdk/internal/classfile/impl/ClassImpl
+jdk/internal/classfile/impl/ClassReaderImpl
 jdk/internal/classfile/impl/DirectClassBuilder
 jdk/internal/classfile/impl/DirectCodeBuilder
 jdk/internal/classfile/impl/DirectCodeBuilder$4
-jdk/internal/classfile/impl/DirectCodeBuilder$8
 jdk/internal/classfile/impl/DirectCodeBuilder$DeferredLabel
+jdk/internal/classfile/impl/DirectFieldBuilder
 jdk/internal/classfile/impl/DirectMethodBuilder
 jdk/internal/classfile/impl/EntryMap
+jdk/internal/classfile/impl/FieldImpl
+jdk/internal/classfile/impl/InterfacesImpl
 jdk/internal/classfile/impl/LabelContext
 jdk/internal/classfile/impl/LabelImpl
+jdk/internal/classfile/impl/MethodImpl
 jdk/internal/classfile/impl/MethodInfo
 jdk/internal/classfile/impl/RawBytecodeHelper
+jdk/internal/classfile/impl/RawBytecodeHelper$1
+jdk/internal/classfile/impl/RawBytecodeHelper$CodeRange
 jdk/internal/classfile/impl/SplitConstantPool
 jdk/internal/classfile/impl/SplitConstantPool$2
 jdk/internal/classfile/impl/StackMapGenerator
 jdk/internal/classfile/impl/StackMapGenerator$1
-jdk/internal/classfile/impl/StackMapGenerator$3
+jdk/internal/classfile/impl/StackMapGenerator$2
 jdk/internal/classfile/impl/StackMapGenerator$Frame
 jdk/internal/classfile/impl/StackMapGenerator$Type
+jdk/internal/classfile/impl/SuperclassImpl
+jdk/internal/classfile/impl/TemporaryConstantPool
 jdk/internal/classfile/impl/TerminalCodeBuilder
+jdk/internal/classfile/impl/TerminalFieldBuilder
 jdk/internal/classfile/impl/TerminalMethodBuilder
 jdk/internal/classfile/impl/UnboundAttribute
 jdk/internal/classfile/impl/UnboundAttribute$AdHocAttribute
+jdk/internal/classfile/impl/UnboundAttribute$UnboundRuntimeVisibleAnnotationsAttribute
+jdk/internal/classfile/impl/UnboundAttribute$UnboundSourceFileAttribute
 jdk/internal/classfile/impl/Util
+jdk/internal/classfile/impl/Util$1WithCodeMethodHandler
+jdk/internal/classfile/impl/Util$Writable
+jdk/internal/constant/ConstantUtils
+jdk/internal/constant/DirectMethodHandleDescImpl
+jdk/internal/constant/DirectMethodHandleDescImpl$1
+jdk/internal/constant/MethodTypeDescImpl
+jdk/internal/constant/PrimitiveClassDescImpl
+jdk/internal/constant/ReferenceClassDescImpl
 jdk/internal/foreign/abi/ABIDescriptor
 jdk/internal/foreign/abi/NativeEntryPoint
 jdk/internal/foreign/abi/UpcallLinker$CallRegs
@@ -1153,7 +1109,6 @@ jdk/internal/foreign/abi/VMStorage
 jdk/internal/jimage/BasicImageReader
 jdk/internal/jimage/BasicImageReader$1
 jdk/internal/jimage/ImageHeader
-jdk/internal/jimage/ImageLocation
 jdk/internal/jimage/ImageReader
 jdk/internal/jimage/ImageReader$SharedImageReader
 jdk/internal/jimage/ImageReaderFactory
@@ -1210,9 +1165,9 @@ jdk/internal/math/DoubleToDecimal
 jdk/internal/math/FDBigInteger
 jdk/internal/math/FloatToDecimal
 jdk/internal/math/MathUtils
+jdk/internal/math/ToDecimal
 jdk/internal/misc/Blocker
 jdk/internal/misc/CDS
-jdk/internal/misc/CarrierThread
 jdk/internal/misc/CarrierThreadLocal
 jdk/internal/misc/InnocuousThread
 jdk/internal/misc/InternalLock
@@ -1236,6 +1191,7 @@ jdk/internal/module/Checks
 jdk/internal/module/DefaultRoots
 jdk/internal/module/ModuleBootstrap
 jdk/internal/module/ModuleBootstrap$Counters
+jdk/internal/module/ModuleBootstrap$IllegalNativeAccess
 jdk/internal/module/ModuleBootstrap$SafeModuleFinder
 jdk/internal/module/ModuleHashes
 jdk/internal/module/ModuleHashes$HashSupplier
@@ -1262,26 +1218,6 @@ jdk/internal/module/SystemModuleFinders$SystemModuleReader
 jdk/internal/module/SystemModules
 jdk/internal/module/SystemModules$all
 jdk/internal/module/SystemModulesMap
-jdk/internal/org/objectweb/asm/AnnotationVisitor
-jdk/internal/org/objectweb/asm/AnnotationWriter
-jdk/internal/org/objectweb/asm/Attribute
-jdk/internal/org/objectweb/asm/ByteVector
-jdk/internal/org/objectweb/asm/ClassReader
-jdk/internal/org/objectweb/asm/ClassVisitor
-jdk/internal/org/objectweb/asm/ClassWriter
-jdk/internal/org/objectweb/asm/ConstantDynamic
-jdk/internal/org/objectweb/asm/FieldVisitor
-jdk/internal/org/objectweb/asm/FieldWriter
-jdk/internal/org/objectweb/asm/Frame
-jdk/internal/org/objectweb/asm/Handle
-jdk/internal/org/objectweb/asm/Handler
-jdk/internal/org/objectweb/asm/Label
-jdk/internal/org/objectweb/asm/MethodVisitor
-jdk/internal/org/objectweb/asm/MethodWriter
-jdk/internal/org/objectweb/asm/Symbol
-jdk/internal/org/objectweb/asm/SymbolTable
-jdk/internal/org/objectweb/asm/SymbolTable$Entry
-jdk/internal/org/objectweb/asm/Type
 jdk/internal/perf/Perf
 jdk/internal/perf/Perf$GetPerfAction
 jdk/internal/perf/PerfCounter
@@ -1311,6 +1247,7 @@ jdk/internal/reflect/MethodHandleAccessorFactory$LazyStaticHolder
 jdk/internal/reflect/MethodHandleFieldAccessorImpl
 jdk/internal/reflect/MethodHandleObjectFieldAccessorImpl
 jdk/internal/reflect/Reflection
+jdk/internal/reflect/Reflection$1Holder
 jdk/internal/reflect/ReflectionFactory
 jdk/internal/reflect/ReflectionFactory$Config
 jdk/internal/reflect/ReflectionFactory$GetReflectionFactoryAction
@@ -1319,7 +1256,6 @@ jdk/internal/util/ArraysSupport
 jdk/internal/util/ByteArray
 jdk/internal/util/ClassFileDumper
 jdk/internal/util/DecimalDigits
-jdk/internal/util/Digits
 jdk/internal/util/OSVersion
 jdk/internal/util/Preconditions
 jdk/internal/util/Preconditions$1
@@ -1328,6 +1264,7 @@ jdk/internal/util/Preconditions$3
 jdk/internal/util/Preconditions$4
 jdk/internal/util/ReferenceKey
 jdk/internal/util/ReferencedKeyMap
+jdk/internal/util/ReferencedKeyMap$1
 jdk/internal/util/ReferencedKeySet
 jdk/internal/util/SoftReferenceKey
 jdk/internal/util/StaticProperty
@@ -1354,10 +1291,10 @@ jdk/internal/vm/vector/VectorSupport$VectorMask
 jdk/internal/vm/vector/VectorSupport$VectorPayload
 jdk/internal/vm/vector/VectorSupport$VectorShuffle
 sun/invoke/empty/Empty
-sun/invoke/util/BytecodeDescriptor
 sun/invoke/util/ValueConversions
 sun/invoke/util/ValueConversions$WrapperCache
 sun/invoke/util/VerifyAccess
+sun/invoke/util/VerifyAccess$1
 sun/invoke/util/VerifyType
 sun/invoke/util/Wrapper
 sun/invoke/util/Wrapper$Format
@@ -1444,6 +1381,7 @@ sun/util/cldr/CLDRBaseLocaleDataMetaInfo
 sun/util/cldr/CLDRCalendarDataProviderImpl
 sun/util/cldr/CLDRLocaleProviderAdapter
 sun/util/locale/BaseLocale
+sun/util/locale/BaseLocale$1InterningCache
 sun/util/locale/InternalLocaleBuilder
 sun/util/locale/InternalLocaleBuilder$CaseInsensitiveChar
 sun/util/locale/LanguageTag
@@ -1483,58 +1421,59 @@ sun/util/resources/LocaleData$1
 sun/util/resources/LocaleData$LocaleDataStrategy
 sun/util/resources/cldr/CalendarData
 sun/util/spi/CalendarProvider
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder delegate L3_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder delegate L5_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder delegate L6_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder delegate L7_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder delegate LLIL_V
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder delegate LLI_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder delegate LL_I
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L10_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L11_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L12_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L3D_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L3F_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L3I_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L3_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L3_V
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L4_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L5_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L6_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L7_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LII_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LJI_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LJJ_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LJL3_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LJLIL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LJLI_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LJLJL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LJLJ_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LJLL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LJL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LLILL_I
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L8_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L9_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LLDL_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LLD_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LLFL_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LLF_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LLII_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LLIL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LLI_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LLJJ_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LLJ_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LL_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L LL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DelegatingMethodHandle$Holder reinvoke_L L_V
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder getDouble LL_D
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder getInt LL_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder getLong LL_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder getReference LL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeInterface L3_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L10_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L11_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L12_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L13_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3DL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3D_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3FL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3F_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3ILL_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3IL_V
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3II_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3IL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3I_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3I_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3I_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3JJ_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3J_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L3_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L4_J
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L4D_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L4F_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L4I_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L4_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L4_V
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L5_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L5_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L6_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L6_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L7_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial L8_L
@@ -1543,38 +1482,16 @@ sun/util/spi/CalendarProvider
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLD_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLFL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLF_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLII_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLII_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLII_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLIL4_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLILILILLI_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLIL_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLIL_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLI_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLI_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLI_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJI_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJJ_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJJ_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJL3_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJL4_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJL5_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJLII_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJLIL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJLI_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJLJJ_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJLJL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJLJ_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJLLI_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJLL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJ_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LLJ_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LL_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeSpecial LL_V
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L10_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L11_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L12_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L3DL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L3D_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L3IL_L
@@ -1582,88 +1499,46 @@ sun/util/spi/CalendarProvider
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L3I_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L3_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L3_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L3_V
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L4I_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L4J_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L4_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L5J_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L5_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L5_V
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L6J_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L6_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L6_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L6_V
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L7_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L8_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L9_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LDD_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LD_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LD_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LFF_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LF_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LF_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LI3_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LII_I
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LIL5_V
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LILILILLIL_V
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LI_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LI_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJI_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJJ_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJJ_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJL3_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJLIL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJLI_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJLJL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJLJ_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJLL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJL_J
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJ_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LJ_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LLILL_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LLIL_V
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LLI_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LLI_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LLJ_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LL_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic LL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStatic L_V
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStaticInit L3_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStaticInit L5_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStaticInit L6_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStaticInit L7_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStaticInit LDD_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStaticInit LFF_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStaticInit LII_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStaticInit LI_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStaticInit LJJ_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStaticInit LL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeStaticInit L_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeVirtual L3_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeVirtual L3_V
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeVirtual LL_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder invokeVirtual LL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder newInvokeSpecial L3_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder newInvokeSpecial L4_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder newInvokeSpecial L5_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder newInvokeSpecial LII_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder newInvokeSpecial LIL4_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder newInvokeSpecial LILILILLI_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder newInvokeSpecial LI_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder newInvokeSpecial LL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder newInvokeSpecial L_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT L3_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT L4_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT L6_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT L7_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT L8_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT LL_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invoke_MT L9_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invoke_MT LL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod DLL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod DL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod FLL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod FL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod IIL_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod IL5_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod ILILILLIL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod ILL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod IL_L
@@ -1682,56 +1557,36 @@ sun/util/spi/CalendarProvider
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod LFL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod LIL_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod LIL_L
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod LL_I
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod LL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod L_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.LambdaForm$Holder identity_D LD_D
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.LambdaForm$Holder identity_I LI_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.LambdaForm$Holder identity_J LJ_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.LambdaForm$Holder identity_L LL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.LambdaForm$Holder zero_D L_D
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.LambdaForm$Holder zero_I L_I
-@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.LambdaForm$Holder zero_J L_J
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.LambdaForm$Holder zero_L L_L
 @lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_D
 @lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_DL
 @lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_I
 @lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_IL
 @lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_L
-@lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LI
-@lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LJ
 @lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LL
-@lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LLJ
 @lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LLL
-@lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LLLJ
-@lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LLLL
-@lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LLLLL
-@lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LLLLLL
-@lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LLLLLLL
-@lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LLLLLLLL
-@lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLL
 @lambda-form-invoker [SPECIES_RESOLVE] java.lang.invoke.SimpleMethodHandle
-@lambda-proxy java/lang/classfile/ClassBuilder accept (Ljava/util/function/Consumer;)Ljava/util/function/Consumer; (Ljava/lang/Object;)V REF_invokeStatic java/lang/classfile/ClassBuilder lambda$withMethodBody$2 (Ljava/util/function/Consumer;Ljava/lang/classfile/MethodBuilder;)V (Ljava/lang/classfile/MethodBuilder;)V
 @lambda-proxy java/lang/module/ModuleDescriptor$Builder accept ()Ljava/util/function/Consumer; (Ljava/lang/Object;)V REF_invokeStatic jdk/internal/module/Checks requirePackageName (Ljava/lang/String;)Ljava/lang/String; (Ljava/lang/String;)V
 @lambda-proxy java/lang/module/ModuleFinder$2 accept (Ljava/lang/module/ModuleFinder$2;Ljava/lang/String;)Ljava/util/function/Consumer; (Ljava/lang/Object;)V REF_invokeVirtual java/lang/module/ModuleFinder$2 lambda$find$1 (Ljava/lang/String;Ljava/lang/module/ModuleReference;)V (Ljava/lang/module/ModuleReference;)V
 @lambda-proxy java/lang/module/ModuleFinder$2 accept (Ljava/lang/module/ModuleFinder$2;Ljava/util/Set;)Ljava/util/function/Consumer; (Ljava/lang/Object;)V REF_invokeVirtual java/lang/module/ModuleFinder$2 lambda$findAll$3 (Ljava/util/Set;Ljava/lang/module/ModuleReference;)V (Ljava/lang/module/ModuleReference;)V
 @lambda-proxy java/lang/module/ModuleFinder$2 apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeStatic java/lang/module/ModuleFinder$2 lambda$findAll$2 (Ljava/lang/module/ModuleFinder;)Ljava/util/stream/Stream; (Ljava/lang/module/ModuleFinder;)Ljava/util/stream/Stream;
 @lambda-proxy java/lang/module/ModuleFinder$2 apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeVirtual java/util/Optional stream ()Ljava/util/stream/Stream; (Ljava/util/Optional;)Ljava/util/stream/Stream;
 @lambda-proxy java/lang/module/ModuleFinder$2 apply (Ljava/lang/String;)Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeStatic java/lang/module/ModuleFinder$2 lambda$find$0 (Ljava/lang/String;Ljava/lang/module/ModuleFinder;)Ljava/util/Optional; (Ljava/lang/module/ModuleFinder;)Ljava/util/Optional;
-@lambda-proxy java/lang/runtime/ObjectMethods accept ()Ljava/util/function/Consumer; (Ljava/lang/Object;)V REF_invokeStatic java/util/Objects requireNonNull (Ljava/lang/Object;)Ljava/lang/Object; (Ljava/lang/invoke/MethodHandle;)V
-@lambda-proxy java/lang/runtime/SwitchBootstraps accept (I[Ljava/lang/Object;ILjava/lang/Class;ILjava/util/List;Ljava/util/List;I)Ljava/util/function/Consumer; (Ljava/lang/Object;)V REF_invokeStatic java/lang/runtime/SwitchBootstraps lambda$generateTypeSwitchSkeleton$3 (I[Ljava/lang/Object;ILjava/lang/Class;ILjava/util/List;Ljava/util/List;ILjava/lang/classfile/CodeBuilder;)V (Ljava/lang/classfile/CodeBuilder;)V
-@lambda-proxy java/lang/runtime/SwitchBootstraps accept (Ljava/lang/Class;)Ljava/util/function/Consumer; (Ljava/lang/Object;)V REF_invokeStatic java/lang/runtime/SwitchBootstraps lambda$typeSwitch$0 (Ljava/lang/Class;Ljava/lang/Object;)V (Ljava/lang/Object;)V
-@lambda-proxy java/lang/runtime/SwitchBootstraps accept (Ljava/lang/Class;[Ljava/lang/Object;Ljava/util/List;Ljava/util/List;)Ljava/util/function/Consumer; (Ljava/lang/Object;)V REF_invokeStatic java/lang/runtime/SwitchBootstraps lambda$generateTypeSwitch$4 (Ljava/lang/Class;[Ljava/lang/Object;Ljava/util/List;Ljava/util/List;Ljava/lang/classfile/ClassBuilder;)V (Ljava/lang/classfile/ClassBuilder;)V
-@lambda-proxy java/lang/runtime/SwitchBootstraps apply ()Ljava/util/function/IntFunction; (I)Ljava/lang/Object; REF_invokeStatic java/lang/runtime/SwitchBootstraps lambda$generateTypeSwitch$5 (I)[Ljava/lang/Enum$EnumDesc; (I)[Ljava/lang/Enum$EnumDesc;
+@lambda-proxy java/lang/runtime/SwitchBootstraps accept (I[Ljava/lang/Object;ILjava/lang/Class;ILjava/util/List;Ljava/util/List;I)Ljava/util/function/Consumer; (Ljava/lang/Object;)V REF_invokeStatic java/lang/runtime/SwitchBootstraps lambda$generateTypeSwitchSkeleton$0 (I[Ljava/lang/Object;ILjava/lang/Class;ILjava/util/List;Ljava/util/List;ILjava/lang/classfile/CodeBuilder;)V (Ljava/lang/classfile/CodeBuilder;)V
+@lambda-proxy java/lang/runtime/SwitchBootstraps accept (ZLjava/lang/Class;[Ljava/lang/Object;Ljava/util/List;Ljava/util/List;)Ljava/util/function/Consumer; (Ljava/lang/Object;)V REF_invokeStatic java/lang/runtime/SwitchBootstraps lambda$generateTypeSwitch$1 (ZLjava/lang/Class;[Ljava/lang/Object;Ljava/util/List;Ljava/util/List;Ljava/lang/classfile/ClassBuilder;)V (Ljava/lang/classfile/ClassBuilder;)V
 @lambda-proxy java/net/DefaultInterface run (Ljava/net/NetworkInterface;)Ljava/security/PrivilegedAction; ()Ljava/lang/Object; REF_invokeVirtual java/net/NetworkInterface getInetAddresses ()Ljava/util/Enumeration; ()Ljava/util/Enumeration;
 @lambda-proxy java/security/Security run ()Ljava/security/PrivilegedAction; ()Ljava/lang/Object; REF_invokeStatic java/security/Security lambda$static$0 ()Ljava/lang/Object; ()Ljava/lang/Object;
-@lambda-proxy java/text/DecimalFormatSymbols test ()Ljava/util/function/IntPredicate; (I)Z REF_invokeStatic java/text/DecimalFormatSymbols lambda$findNonFormatChar$0 (I)Z (I)Z
 @lambda-proxy java/time/ZoneOffset apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeStatic java/time/ZoneOffset lambda$ofTotalSeconds$0 (Ljava/lang/Integer;)Ljava/time/ZoneOffset; (Ljava/lang/Integer;)Ljava/time/ZoneOffset;
 @lambda-proxy java/time/format/DateTimeFormatter queryFrom ()Ljava/time/temporal/TemporalQuery; (Ljava/time/temporal/TemporalAccessor;)Ljava/lang/Object; REF_invokeStatic java/time/format/DateTimeFormatter lambda$static$0 (Ljava/time/temporal/TemporalAccessor;)Ljava/time/Period; (Ljava/time/temporal/TemporalAccessor;)Ljava/time/Period;
 @lambda-proxy java/time/format/DateTimeFormatter queryFrom ()Ljava/time/temporal/TemporalQuery; (Ljava/time/temporal/TemporalAccessor;)Ljava/lang/Object; REF_invokeStatic java/time/format/DateTimeFormatter lambda$static$1 (Ljava/time/temporal/TemporalAccessor;)Ljava/lang/Boolean; (Ljava/time/temporal/TemporalAccessor;)Ljava/lang/Boolean;
 @lambda-proxy java/time/format/DateTimeFormatterBuilder queryFrom ()Ljava/time/temporal/TemporalQuery; (Ljava/time/temporal/TemporalAccessor;)Ljava/lang/Object; REF_invokeStatic java/time/format/DateTimeFormatterBuilder lambda$static$0 (Ljava/time/temporal/TemporalAccessor;)Ljava/time/ZoneId; (Ljava/time/temporal/TemporalAccessor;)Ljava/time/ZoneId;
-@lambda-proxy java/util/Locale apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeStatic java/util/Locale createLocale (Ljava/lang/Object;)Ljava/util/Locale; (Ljava/lang/Object;)Ljava/util/Locale;
-@lambda-proxy java/util/Locale get ()Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_newInvokeSpecial java/util/concurrent/ConcurrentHashMap <init> ()V ()Ljava/util/Map;
 @lambda-proxy java/util/ResourceBundle$Control apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeStatic java/util/ResourceBundle$Control createCandidateList (Lsun/util/locale/BaseLocale;)Ljava/util/List; (Lsun/util/locale/BaseLocale;)Ljava/util/List;
 @lambda-proxy java/util/ResourceBundle$Control get ()Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_newInvokeSpecial java/util/concurrent/ConcurrentHashMap <init> ()V ()Ljava/util/Map;
 @lambda-proxy java/util/ResourceBundle$ResourceBundleProviderHelper run (Ljava/lang/reflect/Constructor;)Ljava/security/PrivilegedAction; ()Ljava/lang/Object; REF_invokeStatic java/util/ResourceBundle$ResourceBundleProviderHelper lambda$newResourceBundle$0 (Ljava/lang/reflect/Constructor;)Ljava/lang/Void; ()Ljava/lang/Void;
@@ -1756,15 +1611,11 @@ sun/util/spi/CalendarProvider
 @lambda-proxy java/util/stream/Collectors get ()Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_newInvokeSpecial java/util/HashSet <init> ()V ()Ljava/util/HashSet;
 @lambda-proxy java/util/stream/Collectors get (Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_invokeStatic java/util/stream/Collectors lambda$joining$11 (Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/util/StringJoiner; ()Ljava/util/StringJoiner;
 @lambda-proxy java/util/stream/Collectors get (Ljava/util/stream/Collector;)Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_invokeStatic java/util/stream/Collectors lambda$partitioningBy$64 (Ljava/util/stream/Collector;)Ljava/util/stream/Collectors$Partition; ()Ljava/util/stream/Collectors$Partition;
-@lambda-proxy java/util/stream/FindOps$FindSink$OfInt get ()Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_newInvokeSpecial java/util/stream/FindOps$FindSink$OfInt <init> ()V ()Ljava/util/stream/TerminalSink;
-@lambda-proxy java/util/stream/FindOps$FindSink$OfInt get ()Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_newInvokeSpecial java/util/stream/FindOps$FindSink$OfInt <init> ()V ()Ljava/util/stream/TerminalSink;
-@lambda-proxy java/util/stream/FindOps$FindSink$OfInt test ()Ljava/util/function/Predicate; (Ljava/lang/Object;)Z REF_invokeVirtual java/util/OptionalInt isPresent ()Z (Ljava/util/OptionalInt;)Z
-@lambda-proxy java/util/stream/FindOps$FindSink$OfInt test ()Ljava/util/function/Predicate; (Ljava/lang/Object;)Z REF_invokeVirtual java/util/OptionalInt isPresent ()Z (Ljava/util/OptionalInt;)Z
-@lambda-proxy java/util/stream/FindOps$FindSink$OfRef get ()Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_newInvokeSpecial java/util/stream/FindOps$FindSink$OfRef <init> ()V ()Ljava/util/stream/TerminalSink;
 @lambda-proxy java/util/stream/FindOps$FindSink$OfRef get ()Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_newInvokeSpecial java/util/stream/FindOps$FindSink$OfRef <init> ()V ()Ljava/util/stream/TerminalSink;
 @lambda-proxy java/util/stream/FindOps$FindSink$OfRef test ()Ljava/util/function/Predicate; (Ljava/lang/Object;)Z REF_invokeVirtual java/util/Optional isPresent ()Z (Ljava/util/Optional;)Z
-@lambda-proxy java/util/stream/FindOps$FindSink$OfRef test ()Ljava/util/function/Predicate; (Ljava/lang/Object;)Z REF_invokeVirtual java/util/Optional isPresent ()Z (Ljava/util/Optional;)Z
+@lambda-proxy java/util/stream/MatchOps get (Ljava/util/stream/MatchOps$MatchKind;Ljava/util/function/Predicate;)Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_invokeStatic java/util/stream/MatchOps lambda$makeRef$0 (Ljava/util/stream/MatchOps$MatchKind;Ljava/util/function/Predicate;)Ljava/util/stream/MatchOps$BooleanTerminalSink; ()Ljava/util/stream/MatchOps$BooleanTerminalSink;
 @lambda-proxy java/util/zip/ZipFile apply (Ljava/util/zip/ZipFile;)Ljava/util/function/IntFunction; (I)Ljava/lang/Object; REF_invokeVirtual java/util/zip/ZipFile lambda$jarStream$1 (I)Ljava/util/jar/JarEntry; (I)Ljava/util/jar/JarEntry;
+@lambda-proxy jdk/internal/classfile/impl/ClassFileImpl apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeStatic jdk/internal/classfile/impl/ClassFileImpl lambda$attributeMapper$0 (Ljava/lang/classfile/constantpool/Utf8Entry;)Ljava/lang/classfile/AttributeMapper; (Ljava/lang/classfile/constantpool/Utf8Entry;)Ljava/lang/classfile/AttributeMapper;
 @lambda-proxy jdk/internal/module/DefaultRoots apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeVirtual java/lang/module/ModuleDescriptor name ()Ljava/lang/String; (Ljava/lang/module/ModuleDescriptor;)Ljava/lang/String;
 @lambda-proxy jdk/internal/module/DefaultRoots apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeVirtual java/lang/module/ModuleReference descriptor ()Ljava/lang/module/ModuleDescriptor; (Ljava/lang/module/ModuleReference;)Ljava/lang/module/ModuleDescriptor;
 @lambda-proxy jdk/internal/module/DefaultRoots test ()Ljava/util/function/Predicate; (Ljava/lang/Object;)Z REF_invokeStatic jdk/internal/module/DefaultRoots lambda$compute$0 (Ljava/lang/module/ModuleReference;)Z (Ljava/lang/module/ModuleReference;)Z
@@ -1783,8 +1634,6 @@ sun/util/spi/CalendarProvider
 @lambda-proxy sun/util/cldr/CLDRLocaleProviderAdapter apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeStatic sun/util/cldr/CLDRLocaleProviderAdapter lambda$applyAliases$5 (Ljava/util/Locale;)Ljava/util/Locale; (Ljava/util/Locale;)Ljava/util/Locale;
 @lambda-proxy sun/util/cldr/CLDRLocaleProviderAdapter run ()Ljava/security/PrivilegedExceptionAction; ()Ljava/lang/Object; REF_invokeStatic sun/util/cldr/CLDRLocaleProviderAdapter lambda$new$0 ()Lsun/util/locale/provider/LocaleDataMetaInfo; ()Lsun/util/locale/provider/LocaleDataMetaInfo;
 @lambda-proxy sun/util/cldr/CLDRLocaleProviderAdapter run (Lsun/util/cldr/CLDRLocaleProviderAdapter;)Ljava/security/PrivilegedAction; ()Ljava/lang/Object; REF_invokeVirtual sun/util/cldr/CLDRLocaleProviderAdapter lambda$getCalendarDataProvider$1 ()Ljava/util/spi/CalendarDataProvider; ()Ljava/util/spi/CalendarDataProvider;
-@lambda-proxy sun/util/locale/BaseLocale apply ()Ljava/util/function/UnaryOperator; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeStatic sun/util/locale/BaseLocale lambda$getInstance$0 (Lsun/util/locale/BaseLocale;)Lsun/util/locale/BaseLocale; (Lsun/util/locale/BaseLocale;)Lsun/util/locale/BaseLocale;
-@lambda-proxy sun/util/locale/BaseLocale get ()Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_newInvokeSpecial java/util/concurrent/ConcurrentHashMap <init> ()V ()Ljava/util/Map;
 @lambda-proxy sun/util/locale/provider/JRELocaleProviderAdapter run (Lsun/util/locale/provider/JRELocaleProviderAdapter;)Ljava/security/PrivilegedAction; ()Ljava/lang/Object; REF_invokeVirtual sun/util/locale/provider/JRELocaleProviderAdapter lambda$getCalendarProvider$11 ()Lsun/util/spi/CalendarProvider; ()Lsun/util/spi/CalendarProvider;
 @lambda-proxy sun/util/locale/provider/JRELocaleProviderAdapter run (Lsun/util/locale/provider/JRELocaleProviderAdapter;)Ljava/security/PrivilegedAction; ()Ljava/lang/Object; REF_invokeVirtual sun/util/locale/provider/JRELocaleProviderAdapter lambda$getDateFormatProvider$2 ()Ljava/text/spi/DateFormatProvider; ()Ljava/text/spi/DateFormatProvider;
 @lambda-proxy sun/util/locale/provider/JRELocaleProviderAdapter run (Lsun/util/locale/provider/JRELocaleProviderAdapter;)Ljava/security/PrivilegedAction; ()Ljava/lang/Object; REF_invokeVirtual sun/util/locale/provider/JRELocaleProviderAdapter lambda$getDateFormatSymbolsProvider$3 ()Ljava/text/spi/DateFormatSymbolsProvider; ()Ljava/text/spi/DateFormatSymbolsProvider;
