@@ -174,6 +174,17 @@ java/lang/classfile/BufWriter
 java/lang/classfile/ClassBuilder
 java/lang/classfile/ClassElement
 java/lang/classfile/ClassFile
+java/lang/classfile/ClassFile$AttributeMapperOption
+java/lang/classfile/ClassFile$AttributesProcessingOption
+java/lang/classfile/ClassFile$ClassHierarchyResolverOption
+java/lang/classfile/ClassFile$ConstantPoolSharingOption
+java/lang/classfile/ClassFile$DeadCodeOption
+java/lang/classfile/ClassFile$DeadLabelsOption
+java/lang/classfile/ClassFile$DebugElementsOption
+java/lang/classfile/ClassFile$LineNumbersOption
+java/lang/classfile/ClassFile$Option
+java/lang/classfile/ClassFile$ShortJumpsOption
+java/lang/classfile/ClassFile$StackMapsOption
 java/lang/classfile/ClassFileBuilder
 java/lang/classfile/ClassFileElement
 java/lang/classfile/ClassHierarchyResolver
@@ -188,6 +199,7 @@ java/lang/classfile/CustomAttribute
 java/lang/classfile/FieldBuilder
 java/lang/classfile/FieldElement
 java/lang/classfile/FieldModel
+java/lang/classfile/Instruction
 java/lang/classfile/Interfaces
 java/lang/classfile/Label
 java/lang/classfile/MethodBuilder
@@ -216,8 +228,23 @@ java/lang/classfile/constantpool/MethodRefEntry
 java/lang/classfile/constantpool/NameAndTypeEntry
 java/lang/classfile/constantpool/PoolEntry
 java/lang/classfile/constantpool/Utf8Entry
+java/lang/classfile/instruction/ArrayLoadInstruction
+java/lang/classfile/instruction/BranchInstruction
+java/lang/classfile/instruction/ConstantInstruction
+java/lang/classfile/instruction/ConstantInstruction$IntrinsicConstantInstruction
+java/lang/classfile/instruction/ConstantInstruction$LoadConstantInstruction
+java/lang/classfile/instruction/FieldInstruction
+java/lang/classfile/instruction/InvokeInstruction
 java/lang/classfile/instruction/LabelTarget
+java/lang/classfile/instruction/LoadInstruction
+java/lang/classfile/instruction/NewObjectInstruction
+java/lang/classfile/instruction/OperatorInstruction
+java/lang/classfile/instruction/ReturnInstruction
+java/lang/classfile/instruction/StackInstruction
+java/lang/classfile/instruction/StoreInstruction
 java/lang/classfile/instruction/SwitchCase
+java/lang/classfile/instruction/TableSwitchInstruction
+java/lang/classfile/instruction/TypeCheckInstruction
 java/lang/constant/ClassDesc
 java/lang/constant/Constable
 java/lang/constant/ConstantDesc
@@ -627,7 +654,6 @@ java/util/ArrayList$ArrayListSpliterator
 java/util/ArrayList$Itr
 java/util/ArrayList$SubList
 java/util/Arrays
-java/util/Arrays$ArrayItr
 java/util/Arrays$ArrayList
 java/util/Arrays$LegacyMergeSort
 java/util/BitSet
@@ -1029,7 +1055,23 @@ jdk/internal/classfile/impl/AbstractAttributeMapper$SourceFileMapper
 jdk/internal/classfile/impl/AbstractAttributeMapper$StackMapTableMapper
 jdk/internal/classfile/impl/AbstractDirectBuilder
 jdk/internal/classfile/impl/AbstractElement
+jdk/internal/classfile/impl/AbstractInstruction
 jdk/internal/classfile/impl/AbstractInstruction$SwitchCaseImpl
+jdk/internal/classfile/impl/AbstractInstruction$UnboundArrayLoadInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundBranchInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundFieldInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundIntrinsicConstantInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundInvokeInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundLoadConstantInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundLoadInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundNewObjectInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundOperatorInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundReturnInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundStackInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundStoreInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundTableSwitchInstruction
+jdk/internal/classfile/impl/AbstractInstruction$UnboundTypeCheckInstruction
 jdk/internal/classfile/impl/AbstractPoolEntry
 jdk/internal/classfile/impl/AbstractPoolEntry$AbstractMemberRefEntry
 jdk/internal/classfile/impl/AbstractPoolEntry$AbstractNamedEntry
@@ -1053,6 +1095,9 @@ jdk/internal/classfile/impl/BufWriterImpl
 jdk/internal/classfile/impl/BytecodeHelpers
 jdk/internal/classfile/impl/BytecodeHelpers$1
 jdk/internal/classfile/impl/ClassFileImpl
+jdk/internal/classfile/impl/ClassFileImpl$1
+jdk/internal/classfile/impl/ClassFileImpl$AttributeMapperOptionImpl
+jdk/internal/classfile/impl/ClassFileImpl$ClassHierarchyResolverOptionImpl
 jdk/internal/classfile/impl/ClassHierarchyImpl
 jdk/internal/classfile/impl/ClassHierarchyImpl$CachedClassHierarchyResolver
 jdk/internal/classfile/impl/ClassHierarchyImpl$CachedClassHierarchyResolver$1
@@ -1064,6 +1109,7 @@ jdk/internal/classfile/impl/ClassReaderImpl
 jdk/internal/classfile/impl/DirectClassBuilder
 jdk/internal/classfile/impl/DirectCodeBuilder
 jdk/internal/classfile/impl/DirectCodeBuilder$4
+jdk/internal/classfile/impl/DirectCodeBuilder$8
 jdk/internal/classfile/impl/DirectCodeBuilder$DeferredLabel
 jdk/internal/classfile/impl/DirectFieldBuilder
 jdk/internal/classfile/impl/DirectMethodBuilder
@@ -1075,8 +1121,6 @@ jdk/internal/classfile/impl/LabelImpl
 jdk/internal/classfile/impl/MethodImpl
 jdk/internal/classfile/impl/MethodInfo
 jdk/internal/classfile/impl/RawBytecodeHelper
-jdk/internal/classfile/impl/RawBytecodeHelper$1
-jdk/internal/classfile/impl/RawBytecodeHelper$CodeRange
 jdk/internal/classfile/impl/SplitConstantPool
 jdk/internal/classfile/impl/SplitConstantPool$2
 jdk/internal/classfile/impl/StackMapGenerator
@@ -1095,6 +1139,7 @@ jdk/internal/classfile/impl/UnboundAttribute$UnboundRuntimeVisibleAnnotationsAtt
 jdk/internal/classfile/impl/UnboundAttribute$UnboundSourceFileAttribute
 jdk/internal/classfile/impl/Util
 jdk/internal/classfile/impl/Util$1WithCodeMethodHandler
+jdk/internal/classfile/impl/Util$1WithFlagFieldHandler
 jdk/internal/classfile/impl/Util$Writable
 jdk/internal/constant/ConstantUtils
 jdk/internal/constant/DirectMethodHandleDescImpl
@@ -1531,7 +1576,11 @@ sun/util/spi/CalendarProvider
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.DirectMethodHandle$Holder newInvokeSpecial L_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT L3_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT L4_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT L6_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT L7_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT L8_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invokeExact_MT LL_L
+@lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invoke_MT L3_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder invoke_MT LL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod DLL_L
 @lambda-form-invoker [LF_RESOLVE] java.lang.invoke.Invokers$Holder linkToTargetMethod DL_L
@@ -1615,7 +1664,6 @@ sun/util/spi/CalendarProvider
 @lambda-proxy java/util/stream/FindOps$FindSink$OfRef test ()Ljava/util/function/Predicate; (Ljava/lang/Object;)Z REF_invokeVirtual java/util/Optional isPresent ()Z (Ljava/util/Optional;)Z
 @lambda-proxy java/util/stream/MatchOps get (Ljava/util/stream/MatchOps$MatchKind;Ljava/util/function/Predicate;)Ljava/util/function/Supplier; ()Ljava/lang/Object; REF_invokeStatic java/util/stream/MatchOps lambda$makeRef$0 (Ljava/util/stream/MatchOps$MatchKind;Ljava/util/function/Predicate;)Ljava/util/stream/MatchOps$BooleanTerminalSink; ()Ljava/util/stream/MatchOps$BooleanTerminalSink;
 @lambda-proxy java/util/zip/ZipFile apply (Ljava/util/zip/ZipFile;)Ljava/util/function/IntFunction; (I)Ljava/lang/Object; REF_invokeVirtual java/util/zip/ZipFile lambda$jarStream$1 (I)Ljava/util/jar/JarEntry; (I)Ljava/util/jar/JarEntry;
-@lambda-proxy jdk/internal/classfile/impl/ClassFileImpl apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeStatic jdk/internal/classfile/impl/ClassFileImpl lambda$attributeMapper$0 (Ljava/lang/classfile/constantpool/Utf8Entry;)Ljava/lang/classfile/AttributeMapper; (Ljava/lang/classfile/constantpool/Utf8Entry;)Ljava/lang/classfile/AttributeMapper;
 @lambda-proxy jdk/internal/module/DefaultRoots apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeVirtual java/lang/module/ModuleDescriptor name ()Ljava/lang/String; (Ljava/lang/module/ModuleDescriptor;)Ljava/lang/String;
 @lambda-proxy jdk/internal/module/DefaultRoots apply ()Ljava/util/function/Function; (Ljava/lang/Object;)Ljava/lang/Object; REF_invokeVirtual java/lang/module/ModuleReference descriptor ()Ljava/lang/module/ModuleDescriptor; (Ljava/lang/module/ModuleReference;)Ljava/lang/module/ModuleDescriptor;
 @lambda-proxy jdk/internal/module/DefaultRoots test ()Ljava/util/function/Predicate; (Ljava/lang/Object;)Z REF_invokeStatic jdk/internal/module/DefaultRoots lambda$compute$0 (Ljava/lang/module/ModuleReference;)Z (Ljava/lang/module/ModuleReference;)Z
