@@ -16,7 +16,7 @@ jobs:
 
       - name: Create minimal JRE
         run: |
-          $JAVA_HOME_25/bin/jlink  --module-path $JAVA_HOME_25/jmods --add-modules java.base,java.desktop,java.logging,java.naming,java.transaction.xa,java.rmi,java.management,java.security.jgss,java.sql,jdk.crypto.ec,jdk.httpserver,java.compiler --output ./linux/aarch64 --no-header-files  --no-man-pages  --strip-debug  --compress=2
+          $JAVA_HOME_25_X64/bin/jlink  --module-path $JAVA_HOME_25_X64/jmods --add-modules java.base,java.desktop,java.logging,java.naming,java.transaction.xa,java.rmi,java.management,java.security.jgss,java.sql,jdk.crypto.ec,jdk.httpserver,java.compiler --output ./linux/aarch64 --no-header-files  --no-man-pages  --strip-debug  --compress=2
           rm -rf ./linux/aarch64/bin
 
       - name: Create Pull Request
